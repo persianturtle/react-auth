@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  client:
+    image: node
+    ports:
+      - 80:80
+    volumes:
+      - ./client:/client
+    working_dir: /client
+    command: bash -c "npm install && npm start"
+    depends_on:
+      - api
+  api:
+    image: node
+    volumes:
+      - ./api:/api
+    working_dir: /api
+    command: bash -c "npm install && npm start"
+    depends_on:
+      - db
+  db:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: crm
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass

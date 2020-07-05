@@ -1,0 +1,13 @@
+{
+  "name": "react-auth",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "docker-compose down --remove-orphans && docker-compose up",
+    "db:recreate": "docker-compose exec -T db sh -c 'mysql -uroot -proot -Dcrm' < db/recreate-tables.sql",
+    "db:populate": "docker-compose exec -T db sh -c 'mysql -uroot -proot -Dcrm' < db/populate-tables.sql",
+    "db:selectUsers": "docker-compose exec -T db sh -c 'mysql -uroot -proot -Dcrm' < db/select-users.sql"
+  },
+  "keywords": [],
+  "author": "Raphael Rafatpanah",
+  "license": "MIT"
+}
